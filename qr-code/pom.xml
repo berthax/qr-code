@@ -17,6 +17,16 @@
   	<module>qr-code-autoconfigure</module>
   	<module>qrcode-spring-boot-starter</module>
   </modules>
+  
+  <properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+  
 
     <licenses>
 		<license>
@@ -51,8 +61,24 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+	
+	<profiles>
+		<profile>
+			<id>ossrh</id>
+			<activation>
+			    <activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+			    <gpg.executable>gpg</gpg.executable>
+			    <gpg.passphrase>Xuan1234</gpg.passphrase>
+			    <gpg.executable>C:\Program Files (x86)\GnuPG\bin\gpg.exe</gpg.executable>
+			    <gpg.homedir>C:/Users/xuanguojing/AppData/Roaming/gnupg</gpg.homedir>
+			</properties>
+		</profile>
+	</profiles>
+	
     
-	<build>
+	<build>		
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -72,6 +98,43 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<configuration>
+				        <aggregate>true</aggregate>
+				        <charset>UTF-8</charset>
+				        <encoding>UTF-8</encoding>
+				        <docencoding>UTF-8</docencoding>
+				        <!-- 让maven忽视javadoc过程中警告和错误 -->
+				        <additionalparam>-Xdoclint:none</additionalparam>
+				    </configuration>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+			</plugin>
+			
+			<!--  必须配置GPG插件用于使用以下配置对组件进行签名 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 		</plugins>
-	</build>	
+	</build>
 </project>

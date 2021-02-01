@@ -76,58 +76,54 @@
 
 	</dependencies>
 
-<!-- 	<distributionManagement>
-		<snapshotRepository>
-			<id>localNexus</id>
-			<name>Nexus Snapshot</name>
-			<url>http://172.27.107.22:8081/repository/local-snapshot-repository/</url>
-		</snapshotRepository>
-		<site> <id>localNexus</id> <name>Nexus Sites</name> <url>dav:http://172.27.107.22:8081/repository/local-snapshot-repository/</url> 
-			</site>
-		<repository>
-			<id>localNexus</id>
-			<url>http://172.27.103.22:8081/repository/local-release/</url>
-		</repository>
-	</distributionManagement> -->
-	<!-- <distributionManagement>
-		<snapshotRepository>
-			<id>localNexus</id>
-			<name>Nexus Snapshot</name>
-			<url>http://172.24.105.14:8081/repository/maven-snapshots/</url>
-		</snapshotRepository>
-		<repository>
-			<id>localNexus</id>
-			<url>http://172.24.105.14:8081/repository/maven-releases/</url>
-		</repository>
-	</distributionManagement> -->
+
 	
 	<build>
-		<plugins>
-			<!--解决update项目后，jdk回退到1.5的问题 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<!-- <artifactId>maven-complier-plugin</artifactId> -->
+					<artifactId>maven-source-plugin</artifactId>
+					<!-- <version>3.2</version> -->
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9.1</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
