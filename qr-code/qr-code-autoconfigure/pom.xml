@@ -15,6 +15,40 @@
 
 	<name>qr-code-autoconfigure</name>
 	<url>http://maven.apache.org</url>
+	
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+        
+    <scm>
+        <tag>master</tag>
+        <url>https://github.com/berthax/qr-code</url>
+        <connection>https://github.com/berthax/qr-code.git</connection>
+        <developerConnection>https://github.com/berthax/qr-code</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>berthax</name>
+            <email>xuanguojing@126.com</email>
+            <url>https://github.com/berthax/qr-code</url>
+        </developer>
+    </developers>
+    
+    <distributionManagement>
+		<snapshotRepository>
+			<id>sonatype</id>
+			<name>sonatype snapshot</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -55,7 +89,7 @@
 			<url>http://172.27.103.22:8081/repository/local-release/</url>
 		</repository>
 	</distributionManagement> -->
-	<distributionManagement>
+	<!-- <distributionManagement>
 		<snapshotRepository>
 			<id>localNexus</id>
 			<name>Nexus Snapshot</name>
@@ -65,7 +99,7 @@
 			<id>localNexus</id>
 			<url>http://172.24.105.14:8081/repository/maven-releases/</url>
 		</repository>
-	</distributionManagement>
+	</distributionManagement> -->
 	
 	<build>
 		<plugins>

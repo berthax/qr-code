@@ -1,37 +1,57 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+  </parent>
+  
   <groupId>io.github.berthax</groupId>
   <artifactId>qr-code</artifactId>
   <version>1.0.4</version>
   <packaging>pom</packaging>
+  <url>http://maven.apache.org</url>
+  
   <modules>
   	<module>qr-code-autoconfigure</module>
   	<module>qrcode-spring-boot-starter</module>
   </modules>
-<!--   	<distributionManagement>
-		<snapshotRepository>
-			<id>localNexus</id>
-			<name>Nexus Snapshot</name>
-			<url>http://172.27.107.22:8081/repository/local-snapshot-repository/</url>
-		</snapshotRepository>
-		<site> <id>localNexus</id> <name>Nexus Sites</name> <url>dav:http://172.27.107.22:8081/repository/local-snapshot-repository/</url> 
-			</site>
-		<repository>
-			<id>localNexus</id>
-			<url>http://172.27.103.22:8081/repository/local-release/</url>
-		</repository>
-	</distributionManagement> -->
+
+    <licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+        
+    <scm>
+        <tag>master</tag>
+        <url>https://github.com/berthax/qr-code</url>
+        <connection>https://github.com/berthax/qr-code.git</connection>
+        <developerConnection>https://github.com/berthax/qr-code</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>berthax</name>
+            <email>xuanguojing@126.com</email>
+            <url>https://github.com/berthax/qr-code</url>
+        </developer>
+    </developers>
+    
 	<distributionManagement>
 		<snapshotRepository>
-			<id>localNexus</id>
-			<name>Nexus Snapshot</name>
-			<url>http://172.24.105.14:8081/repository/maven-snapshots/</url>
+			<id>sonatype</id>
+			<name>sonatype snapshot</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>localNexus</id>
-			<url>http://172.24.105.14:8081/repository/maven-releases/</url>
+			<id>sonatype</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+    
 	<build>
 		<plugins>
 			<plugin>
@@ -53,5 +73,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+	</build>	
 </project>
